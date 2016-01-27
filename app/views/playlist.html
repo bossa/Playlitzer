@@ -1,0 +1,107 @@
+     <script type="text/javascript">
+      
+      // var params = {
+      //   allowScriptAccess: "always" }
+      //     ;
+      // var atts = {
+      //   id: "myytplayer" }
+      //     ;
+      // swfobject.embedSWF("http://www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid=ytplayer&vq=auto", 
+      //                    "ytapiplayer", "180", "120", "8", null, null, params, atts);
+      
+     // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '120',
+          width: '180',
+//          videoId: 'M7lc1UVf-VE',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+      
+    </script>
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">My Playlists</a></li>
+            <li ng-repeat="playlist in playlists">
+              <a href="#/show/{{playlist.$id}}">{{playlist.name}}</a>
+            </li>
+            <li><a href="#/new">Create New +</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div id="listHeader">
+            <div style="float:left;margin-right:20px;">
+              <h2 class="sub-header">
+                Playlist
+                <span id="controls">
+                  <button class="play" ng-click="pausePlay();">
+                    Play
+                  </button>
+                </span>
+              </h2>
+              
+              <form class="form-inline" role="form" ng-submit="addSong()">
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputEmail2">
+                    Youtube ID
+                  </label>
+                  <input ng-model="youtubeId" type="text" name="newId" class="form-control" id="exampleInputEmail2" placeholder="Enter YouTube ID" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                  Add
+                </button>
+              </form>
+              
+            </div>
+            
+<!--             <div id="ytapiplayer">
+              You need Flash player 8+ and JavaScript enabled to view this video.
+            </div> -->
+            <div id="player"></div>
+            
+          </div>
+
+  <div class="table-responsive" id="songs">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            Id
+          </th>
+          <th>
+            Name
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="song in songs" ng-class="{active: isActive(song)}" ng-click="change(song, $index)">
+          <td>
+            {{song.id_video}}
+          </td>
+          <td>
+            {{song.titulo_video}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+        </div>
+        
+      </div>

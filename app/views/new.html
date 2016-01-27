@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-centered box-padding box-buffer div-box">
+      <h2>New Playlist</h2>
+      <form class="form-horizontal" role="form" ng-submit="new()">
+        <div class="form-group">
+          <label for="inputname" class="sr-only">Name</label>
+            <div class="col-sm-12">
+              <input type="text" ng-model="playlist.name" class="form-control" id="inputname" placeholder="Name">
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="inputurl" class="sr-only">Password</label>
+          <div class="col-sm-12">
+            <input type="text" ng-model="playlist.url" class="form-control" id="inputurl" placeholder="Url">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

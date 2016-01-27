@@ -1,0 +1,22 @@
+application: world-playlist-me
+version: 1
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+
+- url: /css
+  static_dir: app/assets/css
+
+- url: /js
+  static_dir: app/assets/js
+
+- url: /images
+  static_dir: app/assets/images
+
+- url: /views
+  static_dir: app/views
+
+- url: /.*
+  script: app/index.php
